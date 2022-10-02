@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Proyecto_Rol.Models;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Proyecto_Rol.Controllers
 {
+    //[Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -18,16 +20,19 @@ namespace Proyecto_Rol.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Administrador,Supervisor,Empleado")]
         public IActionResult Ventas()
         {
             return View();
         }
 
+        [Authorize(Roles = "Administrador,Supervisor")]
         public IActionResult Compras()
         {
             return View();
         }
 
+        [Authorize(Roles = "Administrador,Supervisor")]
         public IActionResult Clientes()
         {
             return View();

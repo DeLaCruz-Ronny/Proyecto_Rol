@@ -13,5 +13,10 @@ namespace Proyecto_Rol.Data
                 new Usuario{Nombre = "Naomi",Correo = "superEmp@gmail.com",Clave = "123",Roles = new string[]{"Supervidor","Empleado"} }
             };
         }
+
+        public Usuario ValidarUsuario(string _correo, string _clave)
+        {
+            return ListaUsuarios().Where(x => x.Correo == _correo && x.Clave == _clave).FirstOrDefault();
+        }
     }
 }
